@@ -1,0 +1,222 @@
+/* Body Styling */
+body {
+    padding-top: 100px;
+    padding-bottom: 100px;
+    background: url('background.jpg') rgba(0, 0, 0, 0.3);
+    background-blend-mode: multiply;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+
+main {
+    flex: 1;
+}
+
+/* Overlay for body */
+body:before {
+    background-color: rgba(0, 0, 0, 0.6);
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+
+
+/* Navbar Styling */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.7);
+    height: 80px;
+    padding: 1rem 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Navbar Title Container (Left Align) */
+.navbar-title-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: nowrap;
+    margin-left: 0;  /* Reset auto margin to align left */
+}
+
+/* Navbar Title and Tagline */
+.navbar-title-container h1,
+.navbar-title-container p {
+    color: white;
+    text-shadow: 1px 1px 2px black, 0 0 25px black, 0 0 5px black;
+    margin: 0;
+}
+
+.navbar-title-container h1 {
+    font-size: 1.5rem;
+    background-color: transparent;
+}
+
+.navbar-title-container p {
+    font-size: 0.6rem;
+    font-style: italic;
+}
+
+/* Navbar Links */
+.navbar .navbar-nav .nav-link {
+    color: white !important;
+    text-shadow: 1px 1px 2px black, 0 0 25px black, 0 0 5px black !important;
+}
+
+.navbar .navbar-nav .nav-link:hover,
+.navbar .navbar-nav .nav-link.active {
+    color: white !important;
+    text-shadow: 1px 1px 2px black, 0 0 25px black, 0 0 5px black !important;
+}
+
+/* Mobile Responsiveness: Align Logo and Title Left, Adjust Burger */
+@media (max-width: 991px) {
+    .navbar {
+        padding: 1rem;
+        flex-direction: row; /* Make sure navbar content is in a row */
+        justify-content: space-between; /* Add space between logo/title and burger */
+    }
+
+    /* Adjust navbar title container on mobile */
+    .navbar-title-container {
+        margin-left: 0;
+        flex-grow: 1; /* Ensures the logo/title takes up available space */
+    }
+
+    .navbar-title-container h1 {
+        font-size: 1.2rem; /* Adjust font size for mobile */
+    }
+
+    .navbar-title-container p {
+        font-size: 0.5rem; /* Adjust tagline font size for mobile */
+    }
+
+    /* Ensure burger icon has enough space on the right */
+    .navbar-toggler {
+        margin-left: auto; /* Push burger menu to the right */
+    }
+}
+
+/* For Larger Screens: Adjust Logo Position and Size */
+@media (min-width: 992px) {
+    .navbar-title-container h1 {
+        font-size: 1.5rem; /* Standard font size for larger screens */
+    }
+
+    .navbar-title-container p {
+        font-size: 0.6rem; /* Standard tagline font size */
+    }
+}
+
+.offcanvas {
+    background: rgba(0, 0, 0, 0.85); /* Dark background with transparency */
+    backdrop-filter: blur(8px); /* Glass-like blur effect */
+    color: white;
+}
+
+.offcanvas .offcanvas-header,
+.offcanvas .offcanvas-body {
+    color: white;
+}
+
+.offcanvas .nav-link {
+    color: #c6f5c6;
+    font-weight: 600;
+    text-shadow: 1px 1px 2px black;
+}
+
+.offcanvas .nav-link:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+
+/* Carousel Styling */
+.carousel-container {
+    height: 400px; /* Adjust based on image aspect ratio */
+    overflow: hidden;
+}
+
+.carousel-item img {
+    width: auto;
+    height: auto;
+    object-fit: contain; /* Ensure the full image is visible */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Cards Styling */
+.card {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+    border-radius: 10px;
+}
+
+.card-img-top {
+    object-fit: cover;
+    height: 200px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.card-text {
+    font-size: 1rem;
+    color: #555;
+}
+
+/* Custom Grid for Cards */
+.card-columns {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+/* Container */
+.container {
+    padding-top: 100px;
+}
+
+/* Footer Styling */
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: auto; /* Pushes the footer down */
+    z-index: 1;
+}
+
+
+
+

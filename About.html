@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link
+    rel="stylesheet"
+    href="node_modules/bootstrap/dist/css/bootstrap.min.css"
+  />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+    <style> 
+
+
+
+        body {
+            padding-top: 100px; 
+            background: url('background.jpg') rgba(0, 0, 0, 0.7);
+            background-blend-mode: multiply;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+            padding-bottom: 100px;
+        }
+
+        .navbar-title-container {
+    display: flex;
+    align-items: center;
+}
+
+
+    /* Navbar Styling */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.7);
+    height: 80px;
+    padding: 1rem 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Navbar Title Container (Left Align) */
+.navbar-title-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: nowrap;
+    margin-left: 0;  /* Reset auto margin to align left */
+}
+
+/* Navbar Title and Tagline */
+.navbar-title-container h1,
+.navbar-title-container p {
+    color: white;
+    text-shadow: 1px 1px 2px black, 0 0 25px black, 0 0 5px black;
+    margin: 0;
+}
+
+.navbar-title-container h1 {
+    font-size: 1.5rem;
+    background-color: transparent;
+}
+
+.navbar-title-container p {
+    font-size: 0.6rem;
+    font-style: italic;
+}
+
+/* Navbar Links */
+.navbar .navbar-nav .nav-link {
+    color: white !important;
+    text-shadow: 1px 1px 2px black, 0 0 25px black, 0 0 5px black !important;
+}
+
+.navbar .navbar-nav .nav-link:hover,
+.navbar .navbar-nav .nav-link.active {
+    color: white !important;
+    text-shadow: 1px 1px 2px black, 0 0 25px black, 0 0 5px black !important;
+}
+
+/* Mobile Responsiveness: Align Logo and Title Left, Adjust Burger */
+@media (max-width: 991px) {
+    .navbar {
+        padding: 1rem;
+        flex-direction: row; /* Make sure navbar content is in a row */
+        justify-content: space-between; /* Add space between logo/title and burger */
+    }
+
+    /* Adjust navbar title container on mobile */
+    .navbar-title-container {
+        margin-left: 0;
+        flex-grow: 1; /* Ensures the logo/title takes up available space */
+    }
+
+    .navbar-title-container h1 {
+        font-size: 1.2rem; /* Adjust font size for mobile */
+    }
+
+    .navbar-title-container p {
+        font-size: 0.5rem; /* Adjust tagline font size for mobile */
+    }
+
+    /* Ensure burger icon has enough space on the right */
+    .navbar-toggler {
+        margin-left: auto; /* Push burger menu to the right */
+    }
+}
+
+/* For Larger Screens: Adjust Logo Position and Size */
+@media (min-width: 992px) {
+    .navbar-title-container h1 {
+        font-size: 1.5rem; /* Standard font size for larger screens */
+    }
+
+    .navbar-title-container p {
+        font-size: 0.6rem; /* Standard tagline font size */
+    }
+}
+
+
+.offcanvas {
+    background: rgba(0, 0, 0, 0.85); /* Dark background with transparency */
+    backdrop-filter: blur(8px); /* Glass-like blur effect */
+    color: white;
+}
+
+.offcanvas .offcanvas-header,
+.offcanvas .offcanvas-body {
+    color: white;
+}
+
+.offcanvas .nav-link {
+    color: #c6f5c6;
+    font-weight: 600;
+    text-shadow: 1px 1px 2px black;
+}
+
+.offcanvas .nav-link:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+        h1, h2 {
+            color: #1a4d2e;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 3rem;
+        }
+
+        h2 {
+            margin-bottom: 30px;
+            font-size: 2rem;
+        }
+
+        section {
+            background-color: #ffffff;
+            margin-bottom: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        /* History Section */
+        #history {
+            background-color: #ffffff;
+        }
+
+        .badge {
+            font-size: 0.875rem;
+            padding: 8px 15px;
+            border-radius: 50px;
+        }
+
+        .d-flex {
+            align-items: center;
+        }
+
+        .d-flex .flex-grow-1 {
+            margin-right: 20px;
+        }
+
+        /* Core Values Section */
+        #core-values .card {
+            border: none;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+
+        #core-values .card-body {
+            padding: 20px;
+        }
+
+        #core-values .card:hover {
+            transform: scale(1.05);
+        }
+
+        #core-values .bi {
+            color: #28a745;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            color: #333;
+        }
+
+        /* Philosophy Section */
+        #philosophy ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        #philosophy ul li {
+            margin-bottom: 15px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        #philosophy ul li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #1a4d2e;
+        }
+
+        /* Mission Section */
+        #mission blockquote {
+            border-left: 5px solid #1a4d2e;
+            padding-left: 20px;
+            margin-left: 0;
+            font-style: italic;
+            font-size: 1.25rem;
+            color: #555;
+        }
+
+        #mission p {
+            font-size: 1rem;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Vision Section */
+        #vision {
+            background-color: #ffffff;
+        }
+
+        #vision .lead {
+            font-size: 1.5rem;
+            color: #1a4d2e;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 767px) {
+            .d-flex {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .card {
+                margin-bottom: 20px;
+            }
+
+            .card-body {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            #core-values .card-body {
+                padding: 10px;
+            }
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: auto; /* Pushes the footer down */
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
+        <div class="container-fluid">
+            <!-- Logo and Title -->
+            <div class="navbar-title-container">
+                <img src="logo-removebg-preview.png" alt="Logo" style="width: 60px; height: auto;">
+                <div class="title-text">
+                    <h1 class="text-white">Earthlings</h1>
+                    <p class="text-white">From Earthlings, For Earthlings</p>
+                </div>
+            </div>
+
+            <!-- Toggler -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Sidebar -->
+            <div class="sidebar offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header text-white border-bottom">
+                    <img src="logo-removebg-preview.png" alt="offcanvas" height="100">
+                    <h5>Welcome Earthlings</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                        <li class="nav-item mx-2">
+                            <a class="nav-link active" aria-current="page" href="Home.html"> Home</a>
+                        </li>
+                        <li class="nav-item mx-2">
+                            <a class="nav-link" href="About.html"> About</a>
+                        </li>
+                        <li class="nav-item mx-2">
+                            <a class="nav-link" href="Project.html">Project</a>
+                        </li>
+                        
+                        <li class="nav-item mx-2">
+                            <a class="nav-link" href="Contact.html">Contact Us</a>
+                        </li>
+                        
+                        <li class="nav-item mx-2" id="navbaruser">
+                            <!-- This will be dynamically filled by JavaScript -->
+                          </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- History Section -->
+    <section id="history" class="container py-5">
+        <h2>Our Journey in Sustainability</h2>
+        <p>Our mission is to make a difference by adopting sustainable practices, reducing our environmental footprint, and contributing to global efforts to protect the planet.</p>
+      
+        <ul class="list-unstyled">
+          <li class="d-flex justify-content-between">
+            <div class="flex-grow-1">
+              <h5>1970 - The First Earth Day</h5>
+              <p>The first Earth Day marked a critical turning point in the global environmental movement, raising awareness about pollution, conservation, and the need for environmental protection.</p>
+            </div>
+            <span class="badge bg-primary align-self-center">Milestone</span>
+          </li>
+          <li class="d-flex justify-content-between">
+            <div class="flex-grow-1">
+              <h5>1992 - United Nations Earth Summit</h5>
+              <p>The Earth Summit in Rio de Janeiro brought together world leaders to agree on environmental goals and set the groundwork for international sustainability policies.</p>
+            </div>
+            <span class="badge bg-success align-self-center">Global Agreement</span>
+          </li>
+          <li class="d-flex justify-content-between">
+            <div class="flex-grow-1">
+              <h5>2005 - Kyoto Protocol Enters into Force</h5>
+              <p>The Kyoto Protocol was the first legally binding international treaty that aimed to reduce global greenhouse gas emissions, setting emissions targets for developed countries.</p>
+            </div>
+            <span class="badge bg-warning align-self-center">International Effort</span>
+          </li>
+          <li class="d-flex justify-content-between">
+            <div class="flex-grow-1">
+              <h5>2015 - The Paris Agreement</h5>
+              <p>Nearly every nation on earth committed to reducing their carbon emissions to combat climate change, marking one of the most ambitious environmental agreements in history.</p>
+            </div>
+            <span class="badge bg-danger align-self-center">Climate Action</span>
+          </li>
+          <li class="d-flex justify-content-between">
+            <div class="flex-grow-1">
+              <h5>2020 - Our Commitment to Zero Waste</h5>
+              <p>We committed to a zero-waste policy, focusing on reducing waste sent to landfills and increasing recycling and reuse practices.</p>
+            </div>
+            <span class="badge bg-info align-self-center">Zero Waste</span>
+          </li>
+        </ul>
+    </section>
+
+    <!-- Core Values Section -->
+    <section id="core-values" class="container py-5">
+        <h2>Our Core Values</h2>
+        <p>Our organization is guided by these core principles, ensuring that our commitment to the environment is reflected in everything we do.</p>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <i class="bi bi-tree text-success" style="font-size: 3rem;"></i>
+                        <h5 class="card-title">Sustainability</h5>
+                        <p class="card-text">We prioritize sustainable practices in every aspect of our business to reduce our environmental footprint.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <i class="bi bi-heart text-danger" style="font-size: 3rem;"></i>
+                        <h5 class="card-title">Responsibility</h5>
+                        <p class="card-text">We take responsibility for our actions and ensure our impact on the planet is positive and long-lasting.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <i class="bi bi-lightbulb text-warning" style="font-size: 3rem;"></i>
+                        <h5 class="card-title">Innovation</h5>
+                        <p class="card-text">We foster innovation to create cutting-edge solutions that support a greener, more sustainable future.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Philosophy Section -->
+    <section id="philosophy" class="container py-5">
+        <h2>Our Philosophy</h2>
+        <p>We believe that true sustainability is not just about what we do, but how we do it. Every action, no matter how small, contributes to the larger goal of preserving the planet for future generations. Our philosophy centers around the following principles:</p>
+        <ul>
+            <li>Embracing nature's design: We take inspiration from the environment to create solutions that align with natural processes.</li>
+            <li>Collaboration: We believe in the power of collaboration to address global challenges, working alongside governments, businesses, and individuals.</li>
+            <li>Transparency: We commit to openness about our actions, goals, and impact to build trust with our stakeholders.</li>
+            <li>Long-term thinking: We are focused on the future, taking steps today to ensure a better tomorrow for the planet and all its inhabitants.</li>
+        </ul>
+    </section>
+
+    <!-- Mission Section -->
+    <section id="mission" class="container py-5">
+        <h2>Our Mission</h2>
+        <blockquote class="blockquote">
+            <p>To lead the global transition to sustainable practices by inspiring and empowering individuals, organizations, and communities to make environmentally conscious decisions that protect and restore the Earth.</p>
+        </blockquote>
+        <p>We aim to catalyze change by providing solutions, knowledge, and tools that make it easier for everyone to embrace sustainability in their daily lives and business operations.</p>
+    </section>
+
+    <!-- Vision Section -->
+    <section id="vision" class="container py-5" style="background-color: #eaf2f1;">
+        <h2>Our Vision</h2>
+        <p class="lead">To build a world where people and nature coexist harmoniously, with a future where sustainability is the norm and environmental well-being is a shared priority for all.</p>
+        <p>We envision a planet where sustainable practices are integrated into every industry, lifestyle, and community, driving global prosperity while preserving the Earth's natural resources.</p>
+    </section>
+
+
+    <footer class="text-white py-4">
+        <div class="container text-center">
+            <p>&copy; 2025 Earthlings. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+          const username = localStorage.getItem('username');
+          const navUserLink = document.getElementById('nav-user-link');
+          if (username) {
+            navUserLink.textContent = `Welcome, ${username}`;
+            navUserLink.href = '#'; // or point to a profile page
+          }
+      
+          // Auto-trigger modal if redirected from login
+          if (localStorage.getItem('triggerModal') === 'true') {
+            const projectName = localStorage.getItem('intendedProject');
+            if (projectName) {
+              document.getElementById('projectInput').value = projectName;
+              const modal = new bootstrap.Modal(document.getElementById('joinNowModal'));
+              modal.show();
+            }
+            localStorage.removeItem('triggerModal');
+            localStorage.removeItem('intendedProject');
+          }
+        });
+      </script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const username = localStorage.getItem('username');
+      const navbarUser = document.getElementById('navbaruser');
+  
+      // Redirect unauthenticated users trying to access this page
+      if (!username && window.location.pathname.includes("Project.html")) {
+        // Optional: Store intended project for later
+        localStorage.setItem("intendedProject", "some-project-name"); // adjust as needed
+        localStorage.setItem("triggerModal", "true");
+        window.location.href = "Login.html";
+        return;
+      }
+  
+      // Set navbar content
+      if (username) {
+        navbarUser.innerHTML = `
+  <div class="d-flex align-items-center">
+    <span class="nav-link text-white mb-0">Welcome, <strong>${username}</strong></span>
+    <button class="btn btn-sm btn-outline-light ms-2" id="logoutBtn">Logout</button>
+  </div>
+`;
+
+  
+        document.getElementById('logoutBtn').addEventListener('click', () => {
+          localStorage.removeItem('username');
+          localStorage.removeItem('intendedProject');
+          localStorage.removeItem('triggerModal');
+          window.location.reload();
+        });
+      } else {
+        navbarUser.innerHTML = `<a class="nav-link" href="Login.html">Join Us</a>`;
+      }
+  
+      // Handle modal auto-trigger if redirected from login
+      if (localStorage.getItem('triggerModal') === 'true') {
+        const projectName = localStorage.getItem('intendedProject');
+        const projectInput = document.getElementById('projectInput');
+        if (projectInput && projectName) {
+          projectInput.value = projectName;
+          const modal = new bootstrap.Modal(document.getElementById('joinNowModal'));
+          modal.show();
+        }
+        localStorage.removeItem('triggerModal');
+        localStorage.removeItem('intendedProject');
+      }
+    });
+
+    navbarUser.innerHTML = `
+  <div class="d-flex align-items-center">
+    <span class="nav-link text-white mb-0">Welcome, <strong>${username}</strong></span>
+    <button class="btn btn-sm btn-outline-light ms-2" id="logoutBtn">Logout</button>
+  </div>
+`;
+ 
+  </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script> -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
